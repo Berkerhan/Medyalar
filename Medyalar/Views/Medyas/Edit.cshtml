@@ -1,0 +1,54 @@
+﻿@model Medyalar.Models.Medya
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Medyalar | Düzenle</h4>
+<a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-light"> < Geri</a>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit"> @*enctype="multipart/form-data*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                Medya Kategorisi (*)
+                <input asp-for="Kategori" class="form-control" />
+                <span asp-validation-for="Kategori" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Başlık (*)
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Önizleme
+                <video controls src=@Model.DosyaAdi width="600" height="350"></video>
+            </div>
+            <div class="form-group">
+                Süre (Dk) (*)
+                <input asp-for="Sure" class="form-control" />
+                <span asp-validation-for="Sure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Açıklama
+                <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+
+            </div>
+            <div class="form-group text-right">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-light">İPTAL</a>
+                <input type="submit" value="KAYDET VE BİTİR" class="btn btn-light" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

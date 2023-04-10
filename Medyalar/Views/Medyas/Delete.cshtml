@@ -1,0 +1,24 @@
+﻿@model Medyalar.Models.Medya
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="text-center">
+    <img src="~/Images/x-image.png" width="150" height="150" />
+</div>
+<br />
+<h3 class="text-center">Kayıt sistemden tamamen silinecek, bu işlem geri alınamaz.</h3>
+<div>
+
+
+
+
+    <form asp-action="Delete" class="text-center">
+        <input type="hidden" asp-for="Id" />
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-light">İptal</a>
+        <input type="submit" value="Tamam" class="btn btn-light" />
+    </form>
+</div>

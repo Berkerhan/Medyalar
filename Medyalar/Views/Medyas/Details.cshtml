@@ -1,0 +1,96 @@
+﻿@model Medyalar.Models.Medya
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>Medyalar | Görüntüle</h4>
+    <a asp-action="Index" class="btn btn-light"> < Geri</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-light">Düzenle</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-light">Sil</a>
+    @if (Model.isArchived == false)
+    {
+        <a asp-action="ArchiveData" asp-route-id="@Model.Id" id="arsivbtn" class="btn btn-light">Arşive Ekle</a>
+    }
+    else
+    {
+        <style>
+            #arsivbtn {
+                visibility: hidden;
+            }
+        </style>
+    }
+
+    <hr />
+    <div class="row">
+        <div class="col-sm-2">
+            Medya Türü
+        </div>
+        <div class="col-sm-10">
+            @Html.DisplayFor(model => model.Tur)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Medya Kategorisi
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.Kategori)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Başlık
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.Baslik)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Dosya Adı
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.DosyaAdi)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Dosya Boyutu
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.DosyaBoyutu)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Önizleme
+        </div>
+        <div class="col-sm-10 pt-4">
+            <video controls src="@Model.DosyaAdi" width="600" height="350"></video>
+        </div>
+        <div class="col-sm-2 pt-4">
+            Süre
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.Sure)
+        </div>
+        <div class="col-sm-2 pt-4">
+            Açıklama
+        </div>
+        <div class="col-sm-10 pt-4">
+            @Html.DisplayFor(model => model.Aciklama)
+        </div>
+
+    </div>
+</div>
+
+@*@section Scripts{
+    <script type="text/javascript">
+        function openModal(strMessage) {
+            var myDiv = document.getElementById("myModalAlertBody");
+            myDiv.innerHTML = strMessage;
+            $('#myModalDelete').modal('show');
+        }
+        $(document).ready(function () {
+            var msg = "@TempData"["Message"];
+            if (msg) {
+                openModal(msg);
+            }
+        })
+    </script>
+    }*@

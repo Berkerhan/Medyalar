@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Medyalar.Models.Medya>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Medyalar</h2>
+
+<div class="container">
+    <p>
+        
+            <a asp-action="Create" class="btn btn-light border" type="button" id="dropdownMenuButton">+ Yeni</a>
+            
+
+    </p>
+    <table class="table table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Medya Türü
+                </th>
+                <th>
+                    Medya Kategorisi
+                </th>
+                <th>
+                    Başlık
+                </th>
+                <th>
+                    Dosya Adı
+                </th>
+                <th>
+                    Dosya Boyutu
+                </th>
+                <th>
+                    Süre
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tur)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kategori)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Baslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DosyaAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DosyaBoyutu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sure) dk
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Details" asp-route-id="@item.Id" class="text-dark text-decoration-none">Görüntüle</a>
+
+                        </td>
+                    </tr>
+
+            }
+        </tbody>
+    </table>
+    <div class="dropdown">
+        <button class="btn border dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">Aktif Kayıtlar</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a id="podcast" asp-action="Index" class="dropdown-item">Aktif Kayıtlar</a>
+            <a id="scorm" asp-action="Archived" class="dropdown-item">Arşivlenmiş Kayıtlar</a>
+
+        </div>
+    </div>
+    
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myTable').DataTable(
+                {
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                    }
+
+
+                }
+            );
+        });
+
+
+    </script>
+}

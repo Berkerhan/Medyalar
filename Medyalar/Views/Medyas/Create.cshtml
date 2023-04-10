@@ -1,0 +1,64 @@
+﻿@model Medyalar.Models.Medya
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Medyalar | Yeni</h4>
+<a asp-action="Index" class="btn btn-light"> < Geri</a>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create"> @*enctype="multipart/form-data*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                Tür (*)
+                <input asp-for="Tur" class="form-control" />
+                <span asp-validation-for="Tur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Medya Kategorisi (*)
+                <input asp-for="Kategori" class="form-control" />
+                @*<select asp-for="Kategori" asp-items="ViewBag.Kategori" class="form-control"></select>*@
+                <span asp-validation-for="Kategori" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Başlık (*)
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Dosya (*)
+                <input asp-for="DosyaAdi" class="form-control" type="file" />
+                <span asp-validation-for="DosyaAdi" class="text-danger"></span>
+                Bu alana 100 MB ile sınırlı dökümanlar yükleyebilirsiniz.
+            </div>
+
+            <div class="form-group">
+                Süre (Dk.) (*)
+                <input asp-for="Sure" class="form-control" />
+                <span asp-validation-for="Sure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Açıklama
+                <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group text-right">
+                <a asp-action="Index" class="btn btn-light">İPTAL</a>
+                <input type="submit" value="KAYDET VE BİTİR" class="btn btn-light" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
