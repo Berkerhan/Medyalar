@@ -1,1 +1,1 @@
-# Medyalar
+# .NET Core CRUD operations
